@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Avery Lab | Cognitive Neuroscience of Taste, Interoception & Reward</title>
+  <meta name="description" content="The Avery Lab at Oklahoma State University Center for Health Sciences investigates the cognitive and neural systems underlying taste, interoception, food reward, and motivated behavior using functional MRI." />
+  <meta property="og:title" content="The Avery Lab" />
+  <meta property="og:description" content="Cognitive neuroscience of taste, interoception, and food reward at OSU-CHS." />
+  <meta property="og:type" content="website" />
+
+  <!--
+  ╔══════════════════════════════════════════════════╗
+  ║  Repo file structure (GitHub Pages):             ║
+  ║  index.html          ← this file                 ║
+  ║  assets/                                         ║
+  ║    logo.png          ← Avery Lab brain-tree logo  ║
+  ║    jaa_headshot.jpg  ← Jason Avery headshot       ║
+  ║    ad_headshot.jpg   ← Allison Drew headshot      ║
+  ║  publications.bib    ← optional BibTeX (auto-pop) ║
+  ╚══════════════════════════════════════════════════╝
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Design Tokens ───────────────────────────────────────────── */
+    :root {
+      --bg:         #faf7f2;
+      --bg-alt:     #f2ebe0;
+      --card:       #fffef9;
+      --text:       #2a1f12;
+      --muted:      #7a6a52;
+      --border:     #e4d9ca;
+      --rose:       #b83367;
+      --rose-lt:    #f8e8ef;
+      --teal:       #3b8a78;
+      --teal-lt:    #e3f2ee;
+      --amber:      #c97640;
+      --amber-lt:   #f7eedd;
+      --plum:       #7c5cbf;
+      --plum-lt:    #ede8f7;
+      --shadow:     0 2px 12px rgba(42,31,18,.07), 0 1px 3px rgba(42,31,18,.04);
+      --shadow-lg:  0 10px 36px rgba(42,31,18,.13);
+      --radius:     20px;
+      --maxw:       1100px;
+      --font-head:  'Lora', Georgia, serif;
+      --font-body:  'Nunito', system-ui, sans-serif;
+    }
+
+    /* ─── Reset ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--teal); }
+    a:hover { color: var(--rose); }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* ─── Typography ──────────────────────────────────────────────── */
+    h1, h2, h3, h4 {
+      font-family: var(--font-head);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text);
+    }
+    h1 { font-size: clamp(28px, 5vw, 50px); }
+    h2 { font-size: clamp(22px, 3.5vw, 34px); }
+    h3 { font-size: 19px; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 11px; font-weight: 800; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .section-intro {
+      color: var(--muted); max-width: 64ch; margin-top: 8px;
+      font-size: 16px; line-height: 1.7;
+    }
+
+    /* ─── Cards ───────────────────────────────────────────────────── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* ─── Buttons ─────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 11px 22px; border-radius: 12px;
+      font-family: var(--font-body); font-weight: 700; font-size: 15px;
+      text-decoration: none; transition: transform .15s, box-shadow .15s, background .15s;
+      cursor: pointer; border: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+    .btn-rose   { background: var(--rose); color: #fff; }
+    .btn-teal   { background: transparent; color: var(--teal); border: 2px solid var(--teal); }
+    .btn-rose:hover { color: #fff; }
+    .btn-teal:hover { color: var(--teal); }
+
+    /* ─── Header / Nav ────────────────────────────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,242,.9);
+      backdrop-filter: blur(14px) saturate(160%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text);
+      font-family: var(--font-head); font-weight: 600; font-size: 17px;
+    }
+    .brand img { height: 42px; width: auto; }
+    nav ul { display: flex; gap: 2px; list-style: none; }
+    nav a {
+      display: inline-block; padding: 8px 14px; border-radius: 10px;
+      color: var(--muted); text-decoration: none; font-weight: 700; font-size: 14px;
+      transition: background .15s, color .15s;
+    }
+    nav a:hover { background: var(--bg-alt); color: var(--text); }
+    .menu-btn {
+      display: none; align-items: center; gap: 6px;
+      padding: 8px 14px; border: 1px solid var(--border); border-radius: 10px;
+      background: transparent; cursor: pointer;
+      font-family: var(--font-body); font-weight: 700; font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ─── Hero ────────────────────────────────────────────────────── */
+    .hero {
+      padding: 80px 0 72px;
+      position: relative; overflow: hidden;
+    }
+    /* Organic background blobs */
+    .hero::before {
+      content: ''; position: absolute;
+      top: -150px; right: -120px;
+      width: 650px; height: 650px;
+      background: radial-gradient(circle at 40% 40%, rgba(184,51,103,.09) 0%, transparent 65%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute;
+      bottom: -100px; left: -80px;
+      width: 450px; height: 450px;
+      background: radial-gradient(circle at 60% 60%, rgba(59,138,120,.07) 0%, transparent 65%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 0.9fr; gap: 60px;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--rose-lt); color: var(--rose);
+      border: 1px solid rgba(184,51,103,.2);
+      padding: 5px 13px; border-radius: 999px;
+      font-size: 12px; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase; margin-bottom: 22px;
+    }
+    .hero h1 { margin-bottom: 22px; }
+    .hero h1 em { font-style: italic; color: var(--rose); }
+    .hero .lead {
+      font-size: clamp(15px, 1.6vw, 17px); color: var(--muted);
+      max-width: 54ch; line-height: 1.7; margin-bottom: 12px;
+    }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+
+    .hero-logo {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .hero-logo img {
+      width: 100%; max-width: 420px;
+      animation: float 7s ease-in-out infinite;
+      filter: drop-shadow(0 24px 48px rgba(184,51,103,.14))
+              drop-shadow(0 8px 16px rgba(59,138,120,.1));
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33%       { transform: translateY(-8px) rotate(.4deg); }
+      66%       { transform: translateY(-4px) rotate(-.3deg); }
+    }
+
+    /* ─── Section generic ─────────────────────────────────────────── */
+    section { padding: 80px 0; }
+    section.alt-bg { background: var(--bg-alt); }
+
+    /* ─── Wavy divider ────────────────────────────────────────────── */
+    .wave { width: 100%; overflow: hidden; line-height: 0; display: block; }
+    .wave svg { display: block; }
+
+    /* ─── Research ────────────────────────────────────────────────── */
+    .research-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 40px;
+    }
+    .rc {
+      padding: 28px 26px 22px;
+      transition: transform .2s, box-shadow .2s;
+      position: relative; overflow: hidden;
+    }
+    .rc:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .rc::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    }
+    .rc-rose::before  { background: linear-gradient(90deg, var(--rose), #e8679a); }
+    .rc-teal::before  { background: linear-gradient(90deg, var(--teal), #66c2ab); }
+    .rc-amber::before { background: linear-gradient(90deg, var(--amber), #e8a96a); }
+    .rc-plum::before  { background: linear-gradient(90deg, var(--plum), #a87fe8); }
+
+    .rc-icon {
+      width: 52px; height: 52px; border-radius: 15px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 18px;
+    }
+    .rc-rose  .rc-icon { background: var(--rose-lt);  }
+    .rc-teal  .rc-icon { background: var(--teal-lt);  }
+    .rc-amber .rc-icon { background: var(--amber-lt); }
+    .rc-plum  .rc-icon { background: var(--plum-lt);  }
+
+    .rc h3 { margin-bottom: 10px; font-size: 19px; }
+    .rc p  { color: var(--muted); font-size: 14.5px; line-height: 1.7; }
+    .chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      display: inline-block; padding: 3px 10px; border-radius: 999px;
+      font-size: 11.5px; font-weight: 700;
+    }
+    .chip-rose  { background: var(--rose-lt);  color: var(--rose);  }
+    .chip-teal  { background: var(--teal-lt);  color: var(--teal);  }
+    .chip-amber { background: var(--amber-lt); color: var(--amber); }
+    .chip-plum  { background: var(--plum-lt);  color: var(--plum);  }
+
+    /* ─── Publications ────────────────────────────────────────────── */
+    .pub-controls {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;
+    }
+    .pub-controls input,
+    .pub-controls select {
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--text); padding: 10px 14px; border-radius: 12px;
+      font-family: var(--font-body); font-size: 14px; flex: 1; min-width: 180px;
+    }
+    .pub-controls input:focus,
+    .pub-controls select:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(59,138,120,.12); }
+
+    .pub-list { display: grid; gap: 10px; }
+    .pub { padding: 18px 20px; transition: box-shadow .15s; cursor: default; }
+    .pub:hover { box-shadow: var(--shadow-lg); }
+    .pub-year-badge {
+      display: inline-block; padding: 2px 8px;
+      background: var(--teal-lt); color: var(--teal);
+      border-radius: 6px; font-size: 11.5px; font-weight: 800;
+      margin-right: 8px; vertical-align: middle;
+    }
+    .pub-authors { color: var(--muted); font-size: 13.5px; font-weight: 600; }
+    .pub-title { font-family: var(--font-head); font-size: 15.5px; font-weight: 500; line-height: 1.4; margin: 4px 0; }
+    .pub-venue { color: var(--teal); font-size: 13.5px; font-weight: 600; }
+    .pub-meta  { color: var(--muted); font-size: 13px; }
+    .pub-link  { display: inline-block; margin-top: 4px; font-size: 12.5px; font-weight: 700; color: var(--rose); text-decoration: none; }
+    .pub-link:hover { text-decoration: underline; color: var(--rose); }
+
+    /* ─── People ──────────────────────────────────────────────────── */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px; margin-top: 40px;
+    }
+    .person-card { overflow: hidden; }
+    .avatar-wrap {
+      width: 100%; aspect-ratio: 4/3; overflow: hidden;
+      border-radius: calc(var(--radius) - 2px) calc(var(--radius) - 2px) 0 0;
+    }
+    .avatar-wrap img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      transition: transform .5s ease;
+    }
+    .person-card:hover .avatar-wrap img { transform: scale(1.04); }
+    .person-info { padding: 22px 24px 26px; }
+    .person-info h3 { margin-bottom: 2px; }
+    .person-role {
+      color: var(--rose); font-weight: 800; font-size: 13px;
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px;
+    }
+    .person-info p { color: var(--muted); font-size: 14px; line-height: 1.68; }
+    .person-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .person-links a {
+      font-size: 12.5px; font-weight: 700; text-decoration: none; color: var(--teal);
+      padding: 5px 12px; border: 1.5px solid var(--teal); border-radius: 8px;
+      transition: background .15s, color .15s;
+    }
+    .person-links a:hover { background: var(--teal); color: #fff; }
+
+    /* ─── Footer ──────────────────────────────────────────────────── */
+    footer {
+      padding: 44px 0 36px;
+      border-top: 1px solid var(--border);
+      background: #ede5d8;
+    }
+    .foot-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .foot-brand { display: flex; align-items: center; gap: 10px; }
+    .foot-brand img { height: 38px; }
+    .foot-brand span { font-family: var(--font-head); font-size: 16px; font-weight: 600; }
+    footer small { color: var(--muted); font-size: 13px; }
+    .foot-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .foot-links a { color: var(--muted); text-decoration: none; font-size: 13.5px; font-weight: 700; transition: color .15s; }
+    .foot-links a:hover { color: var(--rose); }
+
+    /* ─── Scroll animations ───────────────────────────────────────── */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ─── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 920px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-logo { order: -1; }
+      .hero-logo img { max-width: 280px; margin: 0 auto; }
+      .hero .lead { margin-left: auto; margin-right: auto; }
+      .eyebrow { margin-left: auto; margin-right: auto; }
+      .cta-row { justify-content: center; }
+      .research-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      nav ul.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 68px; left: 0; right: 0;
+        background: var(--bg); border-bottom: 1px solid var(--border);
+        padding: 12px 16px 16px;
+      }
+      .menu-btn { display: flex; }
+      section { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─────────────────────────── HEADER ──────────────────────────── -->
+<header>
+  <div class="container nav">
+    <a href="#home" class="brand" aria-label="The Avery Lab">
+      <img src="assets/logo.png" alt="" aria-hidden="true" />
+      The Avery Lab
+    </a>
+    <nav aria-label="Primary navigation">
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu ☰</button>
+      <ul id="menu" role="list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#people">People</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ─────────────────────────── HERO ────────────────────────────── -->
+<main id="home" class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow">🧠 Cognitive Neuroscience &middot; OSU-CHS &middot; Tulsa, OK</div>
+      <h1>We study why some foods feel good, why cravings are hard to resist, and what the brain is doing in between.</h1>
+      <p class="lead">Our research is rooted in the insular cortex but involves brain-wide neurocircuitry, which we examine using functional MRI, multivariate pattern analyses, and computational behavioral modeling.</p>
+      <div class="cta-row">
+        <a href="#research" class="btn btn-rose">Our Research →</a>
+        <a href="https://scholar.google.com/citations?user=eJS3J6MAAAAJ" target="_blank" rel="noopener" class="btn btn-teal">Google Scholar</a>
+      </div>
+    </div>
+    <div class="hero-logo">
+      <img src="assets/logo.png" alt="The Avery Lab — a brain-tree representing our interconnected research on taste, reward, and interoception" />
+    </div>
+  </div>
+</main>
+
+<!-- ─────────────────────────── RESEARCH ────────────────────────── -->
+<svg class="wave" viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,24 C360,48 1080,0 1440,24 L1440,0 L0,0 Z" fill="#faf7f2"/>
+  <path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#f2ebe0"/>
+</svg>
+<section id="research" class="alt-bg">
+  <div class="container">
+    <span class="section-label">Research Areas</span>
+    <h2>Questions that drive us</h2>
+    <p class="section-intro">We are united by a common question: how does the brain adapt to bodily need and an ever-changing environment to generate the thoughts, cravings, and decisions that define our relationship with food and reward?</p>
+
+    <div class="research-grid">
+
+      <article class="card rc rc-rose fade-up">
+        <div class="rc-icon">👅</div>
+        <h3>How is the perception of taste represented in the brain?</h3>
+        <p>The brain doesn't just register taste — it <em>represents</em> it. Using high-resolution fMRI and multivariate pattern analyses, we've shown that the insular cortex encodes taste quality through distributed population codes rather than fixed topographic maps. A striking finding: simply viewing food photographs activates taste-quality-specific activity patterns in gustatory cortex — linking perception, imagery, and appetite in a shared neural language.</p>
+        <div class="chips">
+          <span class="chip chip-rose">fMRI</span>
+          <span class="chip chip-rose">MVPA</span>
+          <span class="chip chip-rose">Gustatory Cortex</span>
+          <span class="chip chip-rose">Population Coding</span>
+        </div>
+      </article>
+
+      <article class="card rc rc-teal fade-up">
+        <div class="rc-icon">💓</div>
+        <h3>How does the brain listen to the body?</h3>
+        <p>The insula is the brain's window into the body. We study how the mid-insula integrates visceral signals — gut tension, heartbeat, breath — with gustatory and emotional processing to produce subjective states. Our research has mapped the insula's functional architecture and documented how interoceptive processing breaks down in psychiatric conditions including major depression, anorexia nervosa, and substance use disorders.</p>
+        <div class="chips">
+          <span class="chip chip-teal">Interoception</span>
+          <span class="chip chip-teal">Insula</span>
+          <span class="chip chip-teal">Body-Brain Interface</span>
+          <span class="chip chip-teal">Psychiatry</span>
+        </div>
+      </article>
+
+      <article class="card rc rc-amber fade-up">
+        <div class="rc-icon">🍎</div>
+        <h3>Why do we care about what we eat?</h3>
+        <p>Food is more than calories and carbs. Our approach to it is shaped by environment, culture, and implicit concepts — like what we believe is or isn't healthy — all of which must be integrated with our biological drive to maintain homeostasis. We use fMRI and computational behavioral modeling to study how the brain manages this careful balance: how limbic regions encode food pleasantness, how prefrontal networks implement health goals and self-control, and how dietary context reshapes these circuits over time.</p>
+        <div class="chips">
+          <span class="chip chip-amber">Decision Modeling</span>
+          <span class="chip chip-amber">OFC &amp; PFC</span>
+          <span class="chip chip-amber">Reward</span>
+          <span class="chip chip-amber">Self-Control</span>
+        </div>
+      </article>
+
+      <article class="card rc rc-plum fade-up">
+        <div class="rc-icon">🌿</div>
+        <h3>How does early life experience influence risk of substance dependence?</h3>
+        <p>The <strong>VERA project</strong> (Vaping, Executive function, Reward &amp; Adversity) investigates how early life adversity shapes the brain circuits governing reward and self-control — and how those changes contribute to vulnerability for e-cigarette use and substance dependence. Using fMRI and behavioral measures, we examine how interoceptive awareness and executive function mediate the relationship between adverse childhood experiences and addiction-related outcomes in young adults.</p>
+        <div class="chips">
+          <span class="chip chip-plum">VERA Study</span>
+          <span class="chip chip-plum">ENDS / E-cigarettes</span>
+          <span class="chip chip-plum">Early Adversity</span>
+          <span class="chip chip-plum">Executive Function</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+<svg class="wave" viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,24 C360,0 1080,48 1440,24 L1440,0 L0,0 Z" fill="#f2ebe0"/>
+  <path d="M0,24 C360,0 1080,48 1440,24 L1440,48 L0,48 Z" fill="#faf7f2"/>
+</svg>
+
+<!-- ─────────────────────────── PUBLICATIONS ─────────────────────── -->
+<section id="publications">
+  <div class="container">
+    <span class="section-label">Publications</span>
+    <h2>Selected Works</h2>
+    <p class="section-intro" style="margin-bottom: 28px;">
+      Full list available on <a href="https://scholar.google.com/citations?user=eJS3J6MAAAAJ" target="_blank" rel="noopener">Google Scholar</a> (4,800+ citations). Add a <code>publications.bib</code> file to the repo root to auto-populate this list from BibTeX.
+    </p>
+
+    <div class="pub-controls">
+      <input id="pubSearch" type="search" placeholder="Search title, authors, journal…" aria-label="Search publications" />
+      <select id="pubYear" aria-label="Filter by year">
+        <option value="">All years</option>
+        <option>2025</option><option>2024</option><option>2023</option><option>2022</option>
+        <option>2021</option><option>2020</option><option>2019</option><option>2018</option>
+        <option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option>
+      </select>
+    </div>
+
+    <div class="pub-list" id="pubList">
+      <!-- Static fallback list — auto-replaced if publications.bib is present in the repo root -->
+
+      <article class="card pub" data-year="2025" data-text="Avery Jason Carrington Madeline Ingeholm Jonathan Darcey Vanessa Simmons Kyle Hall Kevin Martin Alex 2025 Automatic engagement of limbic and prefrontal networks in response to food images reflects distinct information about food hedonics and inhibitory control Communications Biology">
+        <span class="pub-year-badge">2025</span>
+        <div class="pub-authors">Avery JA, Carrington M, Ingeholm JE, Darcey VL, Simmons WK, Hall KD, Martin A.</div>
+        <div class="pub-title">Automatic engagement of limbic and prefrontal networks in response to food images reflects distinct information about food hedonics and inhibitory control</div>
+        <div class="pub-venue">Communications Biology</div>
+        <div class="pub-meta">8(1), 270</div>
+        <a class="pub-link" href="https://doi.org/10.1038/s42003-024-06822-2" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2025" data-text="Zhou Feldman Avery Dewitt Reynolds Chen Atlas 2025 Domain-general and domain-specific mechanisms in valuation and interoception Journal of Cognitive Neuroscience">
+        <span class="pub-year-badge">2025</span>
+        <div class="pub-authors">Zhou Q, Feldman H, Avery J, Dewitt JE, Reynolds R, Chen G, Atlas L.</div>
+        <div class="pub-title">Domain-general and domain-specific mechanisms in valuation and interoception</div>
+        <div class="pub-venue">Journal of Cognitive Neuroscience</div>
+      </article>
+
+      <article class="card pub" data-year="2024" data-text="Adamic Eva Teed Allison Avery Jason de la Cruz Francesca Khalsa Sahib 2024 Hemispheric divergence of interoceptive processing across psychiatric disorders eLife">
+        <span class="pub-year-badge">2024</span>
+        <div class="pub-authors">Adamic EM, Teed AR, Avery JA, de la Cruz F, Khalsa SS.</div>
+        <div class="pub-title">Hemispheric divergence of interoceptive processing across psychiatric disorders</div>
+        <div class="pub-venue">eLife</div>
+        <div class="pub-meta">13:RP92820</div>
+        <a class="pub-link" href="https://doi.org/10.7554/eLife.92820" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2024" data-text="Carrington Madeline Liu Andrew Martin Alex Avery Jason 2024 Naturalistic food categories are driven by subjective estimates rather than objective measures of food qualities Food Quality Preference">
+        <span class="pub-year-badge">2024</span>
+        <div class="pub-authors">Carrington M, Liu AG, Martin A, Avery JA.</div>
+        <div class="pub-title">Naturalistic food categories are driven by subjective estimates rather than objective measures of food qualities</div>
+        <div class="pub-venue">Food Quality &amp; Preference</div>
+        <div class="pub-meta">113, 105073</div>
+        <a class="pub-link" href="https://doi.org/10.1016/j.foodqual.2024.105073" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2023" data-text="Darcey Vanessa Guo Juen Courville Auriel Gallagher Iain Avery Jason Simmons Kyle Ingeholm Jonathan Herscovitch Peter Martin Alex Hall Kevin 2023 Dietary fat restriction affects brain reward regions in a randomized crossover trial JCI Insight">
+        <span class="pub-year-badge">2023</span>
+        <div class="pub-authors">Darcey VL, Guo J, Courville A, Gallagher I, Avery JA, Simmons WK, Ingeholm JE, Herscovitch P, Martin A, Hall KD.</div>
+        <div class="pub-title">Dietary fat restriction affects brain reward regions in a randomized crossover trial</div>
+        <div class="pub-venue">JCI Insight</div>
+        <div class="pub-meta">8(12)</div>
+        <a class="pub-link" href="https://doi.org/10.1172/jci.insight.170556" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2023" data-text="Avery Jason Carrington Madeline Martin Alex 2023 A common neural code for representing imagined and inferred tastes Progress in Neurobiology">
+        <span class="pub-year-badge">2023</span>
+        <div class="pub-authors">Avery JA, Carrington M, Martin A.</div>
+        <div class="pub-title">A common neural code for representing imagined and inferred tastes</div>
+        <div class="pub-venue">Progress in Neurobiology</div>
+        <div class="pub-meta">223, 102423</div>
+        <a class="pub-link" href="https://doi.org/10.1016/j.pneurobio.2023.102423" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2022" data-text="Avery Jason Liu Andrew Carrington Madeline Martin Alex 2022 Taste metaphors ground emotion concepts through the shared attribute of valence Frontiers in Psychology">
+        <span class="pub-year-badge">2022</span>
+        <div class="pub-authors">Avery JA, Liu AG, Carrington M, Martin A.</div>
+        <div class="pub-title">Taste metaphors ground emotion concepts through the shared attribute of valence</div>
+        <div class="pub-venue">Frontiers in Psychology</div>
+        <div class="pub-meta">13, 938663</div>
+        <a class="pub-link" href="https://doi.org/10.3389/fpsyg.2022.938663" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2021" data-text="Avery Jason Liu Andrew Ingeholm Jonathan Gotts Stephen Martin Alex 2021 Viewing images of foods evokes taste quality-specific activity in gustatory insular cortex Proceedings of the National Academy of Sciences PNAS">
+        <span class="pub-year-badge">2021</span>
+        <div class="pub-authors">Avery JA, Liu AG, Ingeholm JE, Gotts SJ, Martin A.</div>
+        <div class="pub-title">Viewing images of foods evokes taste quality-specific activity in gustatory insular cortex</div>
+        <div class="pub-venue">Proceedings of the National Academy of Sciences</div>
+        <div class="pub-meta">118(2)</div>
+        <a class="pub-link" href="https://doi.org/10.1073/pnas.2010932118" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2021" data-text="Avery Jason 2021 Against gustotopic representation in the human brain there is no Cartesian restaurant Current Opinion in Physiology">
+        <span class="pub-year-badge">2021</span>
+        <div class="pub-authors">Avery JA.</div>
+        <div class="pub-title">Against gustotopic representation in the human brain: there is no Cartesian restaurant</div>
+        <div class="pub-venue">Current Opinion in Physiology</div>
+        <div class="pub-meta">20, 23–28</div>
+        <a class="pub-link" href="https://doi.org/10.1016/j.cophys.2020.12.002" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2020" data-text="Avery Jason Liu Alexander Ingeholm Jonathan Riddell Cameron Gotts Stephen Martin Alex 2020 Taste quality representation in the human brain Journal of Neuroscience">
+        <span class="pub-year-badge">2020</span>
+        <div class="pub-authors">Avery JA, Liu AG, Ingeholm JE, Riddell CD, Gotts SJ, Martin A.</div>
+        <div class="pub-title">Taste quality representation in the human brain</div>
+        <div class="pub-venue">Journal of Neuroscience</div>
+        <div class="pub-meta">40(5), 1042–1052</div>
+        <a class="pub-link" href="https://doi.org/10.1523/JNEUROSCI.1751-19.2019" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2020" data-text="Wohltjen Sophie Avery Jason Gotts Stephen Martin Alex 2020 Changes in functional network connectivity during naturalistic viewing are explained by emotional responses not cognitive control PNAS">
+        <span class="pub-year-badge">2020</span>
+        <div class="pub-authors">Wohltjen S, Avery JA, Gotts SJ, Martin A.</div>
+        <div class="pub-title">Changes in functional network connectivity during naturalistic viewing are explained by emotional responses, not cognitive control</div>
+        <div class="pub-venue">Proceedings of the National Academy of Sciences</div>
+        <div class="pub-meta">117(45), 28326–28334</div>
+        <a class="pub-link" href="https://doi.org/10.1073/pnas.2007250117" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2017" data-text="Kerr Kara Moseman Scott Avery Jason Bodurka Jerzy Simmons Kyle 2017 Influence of Visceral Interoceptive Experience on the Brain Response to Food Images in Anorexia Nervosa Psychosomatic Medicine">
+        <span class="pub-year-badge">2017</span>
+        <div class="pub-authors">Kerr KL, Moseman SE, Avery JA, Bodurka J, Simmons WK.</div>
+        <div class="pub-title">Influence of visceral interoceptive experience on the brain's response to food images in anorexia nervosa</div>
+        <div class="pub-venue">Psychosomatic Medicine</div>
+        <div class="pub-meta">79(7), 777–784</div>
+        <a class="pub-link" href="https://doi.org/10.1097/PSY.0000000000000486" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2017" data-text="Avery Jason Darcey Vanessa Liu Andrew Ingeholm Jonathan Riddell Cameron Simmons Kyle Martin Alex 2017 Insula and OFC represent overlapping but distinct information about experienced taste American Journal of Clinical Nutrition">
+        <span class="pub-year-badge">2017</span>
+        <div class="pub-authors">Avery JA, Darcey VL, Liu AG, Ingeholm JE, Riddell CD, Simmons WK, Martin A.</div>
+        <div class="pub-title">Insula and OFC represent overlapping but distinct information about experienced taste</div>
+        <div class="pub-venue">American Journal of Clinical Nutrition</div>
+        <div class="pub-meta">105(6), 1399–1406</div>
+        <a class="pub-link" href="https://doi.org/10.3945/ajcn.116.136903" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2016" data-text="Simmons Kyle Burrows Kaiping Avery Jason Kerr Kara Savage Cary Drevets Wayne 2016 Depression-related increases and decreases in appetite dissociable patterns of aberrant activity in reward and interoceptive neurocircuitry American Journal of Psychiatry">
+        <span class="pub-year-badge">2016</span>
+        <div class="pub-authors">Simmons WK, Burrows K, Avery JA, Kerr KL, Savage CR, Drevets WC.</div>
+        <div class="pub-title">Depression-related increases and decreases in appetite: dissociable patterns of aberrant activity in reward and interoceptive neurocircuitry</div>
+        <div class="pub-venue">American Journal of Psychiatry</div>
+        <div class="pub-meta">173(4), 418–428</div>
+        <a class="pub-link" href="https://doi.org/10.1176/appi.ajp.2015.15020162" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2015" data-text="Avery Jason Kerr Kara Ingeholm Jonathan Burrows Kaiping Bodurka Jerzy Simmons Kyle 2015 A common gustatory and interoceptive representation in the human mid-insula Human Brain Mapping">
+        <span class="pub-year-badge">2015</span>
+        <div class="pub-authors">Avery JA, Kerr KL, Ingeholm JE, Burrows K, Bodurka J, Simmons WK.</div>
+        <div class="pub-title">A common gustatory and interoceptive representation in the human mid-insula</div>
+        <div class="pub-venue">Human Brain Mapping</div>
+        <div class="pub-meta">36(8), 2996–3006</div>
+        <a class="pub-link" href="https://doi.org/10.1002/hbm.22823" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2015" data-text="Kerr Kara Moseman Scott Avery Jason Bodurka Jerzy Zucker Nancy Simmons Kyle 2015 Altered Insula Activity during Visceral Interoception in Weight-Restored Patients with Anorexia Nervosa Neuropsychopharmacology">
+        <span class="pub-year-badge">2015</span>
+        <div class="pub-authors">Kerr KL, Moseman SE, Avery JA, Bodurka J, Zucker NL, Simmons WK.</div>
+        <div class="pub-title">Altered insula activity during visceral interoception in weight-restored patients with anorexia nervosa</div>
+        <div class="pub-venue">Neuropsychopharmacology</div>
+        <div class="pub-meta">41(2), 521–528</div>
+        <a class="pub-link" href="https://doi.org/10.1038/npp.2015.174" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2014" data-text="Avery Jason Drevets Wayne Moseman Sarah Bodurka Jerzy Barcalow Jennifer Simmons Kyle 2014 Major depressive disorder is associated with abnormal interoceptive activity and functional connectivity in the insula Biological Psychiatry">
+        <span class="pub-year-badge">2014</span>
+        <div class="pub-authors">Avery JA, Drevets WC, Moseman SE, Bodurka J, Barcalow JC, Simmons WK.</div>
+        <div class="pub-title">Major depressive disorder is associated with abnormal interoceptive activity and functional connectivity in the insula</div>
+        <div class="pub-venue">Biological Psychiatry</div>
+        <div class="pub-meta">76(3), 258–266</div>
+        <a class="pub-link" href="https://doi.org/10.1016/j.biopsych.2013.10.012" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2014" data-text="Simmons Kyle Rapuano Kerri Ingeholm Jonathan Avery Jason Kallman Sara Hall Kevin Martin Alex 2014 The ventral pallidum and orbitofrontal cortex support food pleasantness inferences Brain Structure Function">
+        <span class="pub-year-badge">2014</span>
+        <div class="pub-authors">Simmons WK, Rapuano KM, Ingeholm JE, Avery J, Kallman S, Hall KD, Martin A.</div>
+        <div class="pub-title">The ventral pallidum and orbitofrontal cortex support food pleasantness inferences</div>
+        <div class="pub-venue">Brain Structure &amp; Function</div>
+        <div class="pub-meta">219(2), 473–483</div>
+        <a class="pub-link" href="https://doi.org/10.1007/s00429-013-0538-7" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2013" data-text="Simmons Kyle Avery Jason Barcalow Jennifer Bodurka Jerzy Drevets Wayne Bellgowan Patrick 2013 Keeping the body in mind insula functional organization and functional connectivity integrate interoceptive exteroceptive and emotional awareness Human Brain Mapping">
+        <span class="pub-year-badge">2013</span>
+        <div class="pub-authors">Simmons WK, Avery JA, Barcalow JC, Bodurka J, Drevets WC, Bellgowan PS.</div>
+        <div class="pub-title">Keeping the body in mind: insula functional organization and functional connectivity integrate interoceptive, exteroceptive, and emotional awareness</div>
+        <div class="pub-venue">Human Brain Mapping</div>
+        <div class="pub-meta">34(11), 2944–2958</div>
+        <a class="pub-link" href="https://doi.org/10.1002/hbm.22113" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+      <article class="card pub" data-year="2013" data-text="Simmons Kyle Rapuano Kerri Kallman Sara Ingeholm Jonathan Miller Ben Gotts Stephen Avery Jason Hall Kevin Martin Alex 2013 Category-specific integration of homeostatic signals in caudal but not rostral human insula Nature Neuroscience">
+        <span class="pub-year-badge">2013</span>
+        <div class="pub-authors">Simmons WK, Rapuano KM, Kallman SJ, Ingeholm JE, Miller B, Gotts SJ, Avery JA, Hall KD, Martin A.</div>
+        <div class="pub-title">Category-specific integration of homeostatic signals in caudal but not rostral human insula</div>
+        <div class="pub-venue">Nature Neuroscience</div>
+        <div class="pub-meta">16(11), 1551–1552</div>
+        <a class="pub-link" href="https://doi.org/10.1038/nn.3535" target="_blank" rel="noopener">doi →</a>
+      </article>
+
+    </div><!-- /pubList -->
+  </div>
+</section>
+
+<!-- ─────────────────────────── PEOPLE ──────────────────────────── -->
+<svg class="wave" viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,24 C360,48 1080,0 1440,24 L1440,0 L0,0 Z" fill="#faf7f2"/>
+  <path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#f2ebe0"/>
+</svg>
+<section id="people" class="alt-bg">
+  <div class="container">
+    <span class="section-label">Lab Members</span>
+    <h2>The People</h2>
+    <p class="section-intro">The Avery Lab is growing. We welcome prospective students and researchers with interests in cognitive neuroscience, fMRI methods, interoception, and addiction. Reach out to learn more.</p>
+
+    <div class="people-grid">
+
+      <article class="card person-card fade-up">
+        <div class="avatar-wrap">
+          <img src="assets/jaa_headshot.jpg" alt="Jason Avery, PhD — Principal Investigator" />
+        </div>
+        <div class="person-info">
+          <h3>Jason Avery, PhD</h3>
+          <p class="person-role">Principal Investigator</p>
+          <p>Assistant Professor, Department of Anatomy &amp; Cell Biology, Oklahoma State University Center for Health Sciences. Dr. Avery studies how the brain represents taste, interoception, and food reward using functional neuroimaging. He examines how sensory, emotional, and decision-making processes converge within circuits anchored by the insular cortex and prefrontal cortex. Before joining OSU-CHS, he was a staff scientist in the Laboratory of Brain and Cognition at the National Institute of Mental Health (NIH).</p>
+          <div class="person-links">
+            <a href="https://scholars.okstate.edu/en/persons/jason-avery/" target="_blank" rel="noopener">Faculty Page</a>
+            <a href="https://scholar.google.com/citations?user=eJS3J6MAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+            <a href="mailto:jason.avery@okstate.edu">Email</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card person-card fade-up">
+        <div class="avatar-wrap">
+          <img src="assets/ad_headshot.jpg" alt="Allison Drew — Research Assistant" />
+        </div>
+        <div class="person-info">
+          <h3>Allison Drew</h3>
+          <p class="person-role">Research Assistant</p>
+          <p>Allison graduated from Yale University with a B.S. in English and Psychology (Neuroscience Track), where she completed an honors thesis on corticolimbic connectivity and early life adversity in the CANDLab under Drs. Dylan Gee and Lucinda Sisk. She now investigates addiction, interoception, reward processing, and the impacts of early adversity, with broad interests in neuroimaging and the clinical applications of trauma and resilience research.</p>
+          <div class="person-links">
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── FOOTER ──────────────────────────── -->
+<footer>
+  <div class="container foot-inner">
+    <div class="foot-brand">
+      <img src="assets/logo.png" alt="The Avery Lab" />
+      <span>The Avery Lab</span>
+    </div>
+    <small>© <span id="year"></span> The Avery Lab &middot; Oklahoma State University Center for Health Sciences &middot; Tulsa, OK &middot; <a href="mailto:jason.avery@okstate.edu">jason.avery@okstate.edu</a></small>
+    <div class="foot-links">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#people">People</a>
+      <a href="https://scholar.google.com/citations?user=eJS3J6MAAAAJ" target="_blank" rel="noopener">Scholar</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Mobile nav ─────────────────────────────────────────────────── */
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var menu = document.getElementById('menu');
+  if(!btn || !menu) return;
+  btn.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Close ✕' : 'Menu ☰';
+  });
+  // Close menu on nav link click
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = 'Menu ☰';
+    });
+  });
+})();
+
+/* ── Smooth scroll ──────────────────────────────────────────────── */
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = this.getAttribute('href');
+      var target = id && id.length > 1 && document.querySelector(id);
+      if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+})();
+
+/* ── Scroll-triggered fade-in ───────────────────────────────────── */
+(function(){
+  var els = document.querySelectorAll('.fade-up');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el){ obs.observe(el); });
+})();
+
+/* ── Year ───────────────────────────────────────────────────────── */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ── Publications: search + filter + BibTeX auto-loader ────────── */
+(function(){
+  var pubList   = document.getElementById('pubList');
+  var searchEl  = document.getElementById('pubSearch');
+  var yearEl    = document.getElementById('pubYear');
+  if(!pubList) return;
+
+  function filterPubs(){
+    var q = (searchEl ? searchEl.value : '').toLowerCase().trim();
+    var y = yearEl ? yearEl.value.trim() : '';
+    var items = pubList.querySelectorAll('.pub');
+    var shown = 0;
+    items.forEach(function(el){
+      var matchText = (el.getAttribute('data-text') || el.textContent || '').toLowerCase();
+      var matchYear = !y || el.getAttribute('data-year') === y;
+      var matchQ    = !q || matchText.indexOf(q) !== -1;
+      var vis = matchYear && matchQ;
+      el.style.display = vis ? '' : 'none';
+      if(vis) shown++;
+    });
+    var empty = document.getElementById('noPubs');
+    if(shown === 0){
+      if(!empty){
+        empty = document.createElement('p');
+        empty.id = 'noPubs';
+        empty.style.cssText = 'color:var(--muted);padding:16px 0;';
+        empty.textContent = 'No publications match your filters.';
+        pubList.appendChild(empty);
+      }
+    } else if(empty){ empty.parentNode.removeChild(empty); }
+  }
+
+  if(searchEl) searchEl.addEventListener('input', filterPubs);
+  if(yearEl)   yearEl.addEventListener('change', filterPubs);
+
+  /* BibTeX parser — drops in a clean entry list if publications.bib exists */
+  function trimBQ(v){
+    v = (v||'').toString().trim();
+    if(v[0]==='{') v = v.slice(1);
+    if(v[v.length-1]==='}') v = v.slice(0,-1);
+    if(v[0]==='"') v = v.slice(1);
+    if(v[v.length-1]==='"') v = v.slice(0,-1);
+    return v.trim();
+  }
+  function fmtAuthors(s){
+    var parts = s.split(/\s+and\s+/i).map(function(p){ return p.trim(); }).filter(Boolean);
+    if(parts.length <= 2) return parts.join(', ');
+    var last = parts.pop(); return parts.join(', ') + ', ' + last;
+  }
+  function bibEntryHTML(e){
+    var yr  = e.year || (e.date||'').match(/\d{4}/) && (e.date||'').match(/\d{4}/)[0] || '';
+    var au  = fmtAuthors(e.author || e.authors || '');
+    var ti  = e.title || '';
+    var jrn = e.journal || e.booktitle || e.publisher || '';
+    var vol = e.volume || ''; var num = e.number || ''; var pgs = e.pages || '';
+    var details = ''; if(vol) details = vol; if(num) details += '('+num+')'; if(pgs){ if(details) details+=', '; details+=pgs; }
+    var doi = e.doi ? (e.doi.indexOf('http')===0 ? e.doi : 'https://doi.org/'+e.doi) : '';
+    var dtxt = [au,yr,ti,jrn,vol,num,pgs].join(' ').replace(/\s+/g,' ').trim();
+    return '<article class="card pub" data-year="'+yr+'" data-text="'+dtxt+'">'
+      +'<span class="pub-year-badge">'+yr+'</span>'
+      +'<div class="pub-authors">'+au+'</div>'
+      +'<div class="pub-title">'+ti+'</div>'
+      +(jrn ? '<div class="pub-venue">'+jrn+'</div>' : '')
+      +(details ? '<div class="pub-meta">'+details+'</div>' : '')
+      +(doi ? '<a class="pub-link" href="'+doi+'" target="_blank" rel="noopener">doi →</a>' : '')
+      +'</article>';
+  }
+  function parseBib(txt){
+    var lines=txt.split('\n'), entries=[], cur=null, inEntry=false, depth=0, body='';
+    for(var i=0;i<lines.length;i++){
+      var line=lines[i];
+      if(!inEntry && line.trim()[0]==='@'){
+        inEntry=true; cur={}; body=''; depth=0;
+        var ix=line.indexOf('{'); if(ix>=0){ depth=1; body+=line.slice(ix+1)+'\n'; } continue;
+      }
+      if(inEntry){
+        for(var k=0;k<line.length;k++){ var ch=line[k]; if(ch==='{')depth++; else if(ch==='}')depth--; }
+        body+=line+'\n';
+        if(depth<=0){
+          var rows=body.split('\n');
+          for(var r=0;r<rows.length;r++){
+            var ln=rows[r]; var eq=ln.indexOf('='); if(eq<0) continue;
+            var key=ln.slice(0,eq).trim().toLowerCase();
+            var val=ln.slice(eq+1).trim();
+            if(val.endsWith(',')) val=val.slice(0,-1);
+            val=trimBQ(val);
+            if(key) cur[key]=val;
+          }
+          entries.push(cur); inEntry=false; cur=null; body='';
+        }
+      }
+    }
+    return entries;
+  }
+  function renderBib(entries){
+    entries = entries.filter(function(e){ return e.title && (e.year||e.date); });
+    entries.sort(function(a,b){ return Number(b.year||0)-Number(a.year||0); });
+    if(!entries.length) return;
+    pubList.innerHTML = entries.map(bibEntryHTML).join('');
+    filterPubs();
+  }
+  fetch('publications.bib', {cache:'no-store'}).then(function(r){
+    if(!r.ok) return;
+    return r.text().then(renderBib);
+  }).catch(function(){ /* silently fall back to static list */ });
+})();
+</script>
+
+</body>
+</html>

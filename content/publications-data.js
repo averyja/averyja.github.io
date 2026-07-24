@@ -1,4 +1,8 @@
-@misc{avery2026format,
+/*
+ * Browser-safe publication data.
+ * Keep this file in sync with publications.bib when publications change.
+ */
+window.AVERY_LAB_PUBLICATIONS_BIB = String.raw`@misc{avery2026format,
   title={Format-invariant semantic dimensions structure food similarity judgments},
   author={Avery, Jason A and Zheng, Charles Y and Candy, Caroline and Persichetti, Andrew S and Martin, Alex},
   journal={PsyArXiv}, year={2026},
@@ -205,3 +209,4 @@
   author={Mailler, Roger and Avery, Jason and Graves, Jacob and Willy, Nathan},
   booktitle={2010 International Conference on Biosciences}, pages={84--90}, year={2010}
 }
+`;
