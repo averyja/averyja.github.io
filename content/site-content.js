@@ -55,6 +55,12 @@ window.AVERY_LAB_CONTENT = {
         "The VERA study combines fMRI, behavioral measures, EMA, and wearable sensing to test how early adversity influences executive control, interoception, and vulnerability to e-cigarette dependence.",
       methods: ["VERA study", "ENDS / nicotine", "Early adversity", "EMA"],
       accent: "violet",
+      logo: "assets/vera-logo.png",
+      logoAlt:
+        "VERA study logo: a brain formed from vapor rising from an e-cigarette device labeled VERA",
+      // intrinsic pixel size of the file above; keeps the browser from reflowing when it loads
+      logoWidth: 400,
+      logoHeight: 418,
     },
   ],
 

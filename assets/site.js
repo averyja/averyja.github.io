@@ -24,8 +24,10 @@
     var grid=document.getElementById("research-grid");if(!grid)return;
     grid.innerHTML=(content.research||[]).map(function(item,index){
       var tags=(item.methods||[]).map(function(tag){return "<span>"+escapeHTML(tag)+"</span>"}).join("");
+      var size=item.logoWidth&&item.logoHeight?' width="'+escapeHTML(String(item.logoWidth))+'" height="'+escapeHTML(String(item.logoHeight))+'"':"";
+      var logo=item.logo?'<img class="research-card-logo" src="'+escapeHTML(item.logo)+'" alt="'+escapeHTML(item.logoAlt||"")+'"'+size+' loading="lazy" />':"";
       return '<article class="research-card reveal" data-delay="'+(index%2)+'" data-accent="'+escapeHTML(item.accent||"berry")+'">'+
-        '<div class="research-card-header"><span>'+escapeHTML(item.label)+'</span><span>'+escapeHTML(item.number)+'</span></div><h3>'+escapeHTML(item.title)+'</h3><p>'+escapeHTML(item.description)+'</p><div class="tag-list" aria-label="Methods and topics">'+tags+'</div></article>';
+        '<div class="research-card-header"><span>'+escapeHTML(item.label)+'</span><span>'+escapeHTML(item.number)+'</span></div><h3>'+escapeHTML(item.title)+'</h3><p>'+escapeHTML(item.description)+'</p><div class="research-card-footer"><div class="tag-list" aria-label="Methods and topics">'+tags+'</div>'+logo+'</div></article>';
     }).join("");
   }
 
