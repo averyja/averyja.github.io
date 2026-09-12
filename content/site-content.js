@@ -90,10 +90,11 @@ window.AVERY_LAB_CONTENT = {
   ],
 
   publicationLinks: {
-    avery2025automatic: "https://doi.org/10.1038/s42003-024-06822-2",
+    zhao2026domain: "https://doi.org/10.1523/JNEUROSCI.1103-25.2025",
+    avery2025automatic: "https://doi.org/10.1038/s42003-025-07704-w",
     adamic2024hemispheric: "https://doi.org/10.7554/eLife.92820",
     carrington2024naturalistic: "https://doi.org/10.1016/j.foodqual.2024.105073",
-    darcey2023dietary: "https://doi.org/10.1172/jci.insight.170556",
+    darcey2023dietary: "https://doi.org/10.1172/jci.insight.169759",
     avery2023common: "https://doi.org/10.1016/j.pneurobio.2023.102423",
     avery2022taste: "https://doi.org/10.3389/fpsyg.2022.938663",
     avery2021viewing: "https://doi.org/10.1073/pnas.2010932118",
