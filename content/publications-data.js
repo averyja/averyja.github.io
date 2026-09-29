@@ -9,11 +9,11 @@ window.AVERY_LAB_PUBLICATIONS_BIB = String.raw`@misc{avery2026format,
   url={https://osf.io/preprints/psyarxiv/fmvyw}
 }
 
-@misc{candy2026nonlinear,
+@article{candy2026nonlinear,
   title={Non-linear estimates of nutritional properties, driven by health biases, lead to systematic errors in caloric food choice},
   author={Candy, Caroline and Martin, Alex and Avery, Jason},
-  journal={PsyArXiv}, year={2026},
-  url={https://osf.io/preprints/psyarxiv/ja3dh}
+  journal={Food Quality and Preference}, year={2026},
+  doi={10.1016/j.foodqual.2026.106128}
 }
 
 @misc{carlson2026what,
