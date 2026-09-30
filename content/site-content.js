@@ -90,7 +90,7 @@ window.AVERY_LAB_CONTENT = {
   ],
 
   publicationLinks: {
-    candy2026nonlinear: "https://doi.org/10.1016/j.foodqual.2026.106128",
+    candy2027nonlinear: "https://doi.org/10.1016/j.foodqual.2026.106128",
     zhao2026domain: "https://doi.org/10.1523/JNEUROSCI.1103-25.2025",
     avery2025automatic: "https://doi.org/10.1038/s42003-025-07704-w",
     adamic2024hemispheric: "https://doi.org/10.7554/eLife.92820",
